@@ -12,24 +12,9 @@ import javax.persistence.Query;
 import java.util.function.Supplier;
 
 public class MainHelper {
-    private final JPAApi jpaApi;
-    @Inject
-    public MainHelper(JPAApi jpaApi) {
-        this.jpaApi = jpaApi;
+    public String registration(DynamicForm dynamicForm){
+        Articulo articulo = new Articulo();
+        return "";
     }
-
-    /**
-     * Metodo para autenticarse
-     * @param name
-     * @param password
-     * @return
-     */
-    public User authenticate(String name, String password){
-            Query query = JPA.em().createNamedQuery("User.authTenticate").setParameter("name", name).setParameter("password",password);
-            try {
-                return  (User) query.getSingleResult();
-            } catch (NoResultException nre) {
-                return null;
-            }
-    }
+} `
 }

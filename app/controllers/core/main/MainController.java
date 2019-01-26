@@ -59,8 +59,9 @@ public class MainController extends Controller {
      * @return
      */
     @Transactional
-    public Result authenticate() {
+    public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+
         User user=mainHelper.authenticate(dynamicForm.get("user"),dynamicForm.get("inputPassword"));
         if(null == user){
             return ok(login.render(true));
