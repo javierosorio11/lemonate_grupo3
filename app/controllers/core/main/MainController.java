@@ -1,9 +1,7 @@
 package controllers.core.main;
 
 import controllers.core.main.helpers.MainHelper;
-import controllers.lmat.routes;
 import models.GenericEntity;
-import models.users.User;
 import org.hibernate.SessionFactory;
 import play.Logger;
 import play.data.DynamicForm;
@@ -61,14 +59,11 @@ public class MainController extends Controller {
     @Transactional
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-
-        User user=mainHelper.authenticate(dynamicForm.get("user"),dynamicForm.get("inputPassword"));
-        if(null == user){
+        String response=mainHelper.registration(dynamicForm);
+        if("error".equals(response)){
             return ok(login.render(true));
         }else{
-            session().put("usuario",user.getName());
-            session().put("warehouse",user.getLocation());
-            return redirect(controllers.core.main.routes.MainController.home());
+            return ok(login.render(true));
         }
     }
     /**
@@ -76,11 +71,9 @@ public class MainController extends Controller {
      * @return
      */
     public Result home() {
-        if(null!=session("usuario")) {
-            return redirect(controllers.lmat.routes.LmatController.listLmat(1L,true,"NONE"));
-        }else {
-            return ok(login.render(false));
-        }
+
+            return ok();
+
     }
     /**
      * Autenticacion de datos
@@ -96,35 +89,19 @@ public class MainController extends Controller {
      * @return
      */
     public Result getActualCountry() {
-        if(null!=session("usuario")) {
-            WarehouseEnum warehouseEnum = WarehouseEnum.valueOf(session("warehouse")) ;
-            return ok(warehouseEnum.getDisplayMessage());
-        }else {
+
             return ok("");
-        }
+
     }
-    /**
-     * Autenticacion de datos
-     * @return
-     */
-    public Result recibirCargas() {
-        DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-        User users = new User();
-        users.setPassword("fff");
-        return ok();
-    }
+
     /**
      * Autenticacion de datos
      * @return
      */
     public Result changeCountry(String country) {
-        if(null!=session("usuario")) {
-            session().put("warehouse",country);
-            return redirect(controllers.lmat.routes.LmatController.listLmat(1L,true,"NONE"));
-        }else {
-            flash().put("error", "Error en sesión, por favor ingrese con sus credenciales");
-            return ok(login.render(false));
-        }
+
+            return ok();
+
     }
 
     /**
@@ -132,8 +109,7 @@ public class MainController extends Controller {
      * @return
      */
     public Result javascriptRoutes() {
-        return ok(JavaScriptReverseRouter.create("jsRoutes", controllers.core.main.routes.javascript.MainController.getActualCountry(),
-                controllers.lmat.routes.javascript.LmatController.getLmatData()
+        return ok(JavaScriptReverseRouter.create("jsRoutes", ""
         )).as("text/javascript");
     }
 }
