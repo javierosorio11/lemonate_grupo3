@@ -6,11 +6,6 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <non-jta-data-source>BaseDS</non-jta-data-source>
         <class>models.users.User</class>
-        <class>models.Lmat.Lmat</class>
-        <class>models.Lmat.InventarioDisponible</class>
-        <class>models.Lmat.Articulo</class>
-        <class>models.Lmat.TransaccionesInventario</class>
-        <class>models.Lmat.Madres</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <!-- Enable Hibernate's automatic session context management -->

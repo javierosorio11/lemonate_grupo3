@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
   javaWs,
   evolutions,
   "org.hibernate" % "hibernate-core" % "5.2.10.Final",
-  "mysql" % "mysql-connector-java" % "8.0.13",
+  "mysql" % "mysql-connector-java" % "5.1.39",
   "dom4j" % "dom4j" % "1.6.1",
   "com.sendgrid" % "sendgrid-java" % "2.2.2",
   "junit" % "junit" % "4.11",
