@@ -35,7 +35,6 @@ libraryDependencies ++= Seq(
   "org.mockito" % "mockito-all" % "1.10.19",
   "uk.co.jemos.podam" % "podam" % "7.0.4.RELEASE",
   "org.julienrf" %% "play-jsmessages" % "2.0.0",
-  "com.lowagie" % "itext" % "2.1.7",
   "net.sourceforge.jexcelapi" % "jxl" % "2.6.10",
   "net.sf.jasperreports" % "jasperreports" % "5.5.1",
   "com.amazonaws" % "aws-java-sdk" % "1.11.93",
