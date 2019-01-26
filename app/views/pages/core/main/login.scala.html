@@ -1,0 +1,73 @@
+@import views.html.pages.core.main.mainHead
+@import views.html.components.main.form
+@(error : Boolean)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SIC - Sistema Integrado Crusardi</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+      <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-grid.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-reboot.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("datatables/dataTables.bootstrap4.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("fontawesome-free-5.3.1-web/css/all.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("sb_admin/css/sb-admin.css")" rel="stylesheet" type="text/css">
+      <!-- js -->
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery/jquery.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery/jquery.slim.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("popper/popper.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("popper/popper-utils.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.compatibility.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("fontawesome-free-5.3.1-web/js/all.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("datatables/dataTables.bootstrap4.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("datatables/jquery.dataTables.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.bundle.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("sb_admin/js/sb-admin.js")"></script>
+    <script type="text/javascript" src="@controllers.core.main.routes.MainController.javascriptRoutes"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  </head>
+    @form(controllers.core.main.routes.MainController.authenticate(),"loginform"){
+  <body class="bg-dark">
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Inicio</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" id="user" name="user" class="form-control">
+                <label for="inputEmail">Usuario</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" name="inputPassword" class="form-control">
+                <label for="inputPassword">Contraseña</label>
+              </div>
+            </div>
+            @if(error){
+            <div class="alert alert-danger" role="alert">
+              Usuario o contraseña incorrecta
+            </div>
+            }
+            <button class="btn btn-primary btn-block" type="submit">Inicio</button>
+          </form>
+          <div class="text-center">
+            <a class="d-block small" href="forgot-password.html">Olvidó su contraseña?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
+    }
+
+</html>

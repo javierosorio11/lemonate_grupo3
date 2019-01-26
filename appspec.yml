@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /esbdata/sources/SIC/
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      timeout: 3600
+      runas: root
+  AfterInstall:
+    - location: scripts/afterinstall.sh
+      timeout: 3600
+      runas: root
+  ApplicationStart:
+    - location: scripts/applicationstart.sh
+      timeout: 3600
+      runas: root
+  ValidateService:
+    - location: scripts/validateservice.sh
+      timeout: 3600
+      runas: root
+  ApplicationStop:
+    - location: scripts/applicationstop.sh
+      timeout: 3600
+      runas: root

@@ -1,0 +1,50 @@
+@import views.html.pages.core.main.mainHead
+@import views.vo.LmatVO
+@(lmatList : List[LmatVO],pages : List[Long],totalpages : Long,actualPage : Long,criteria : String)
+  @mainHead{
+            <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">LMAT</a>
+            </li>
+            <li class="breadcrumb-item active">Lista</li>
+          </ol>
+  @if(null !=lmatList){
+    <div class="container">
+      <div class="row">
+      @for(lmat <-lmatList){
+          <div class="col-sm-3">
+              <div class="row border rounded fixed" style="align-content: center">
+                <div class="col-sm-12" style="text-align: center">
+                <p><strong>@lmat.getName</strong></p>
+                </div>
+                <div class="col-sm-12" style="text-align: center">
+                <img src="http://boconceptla.com/fotosmuebles/FOTOS/STOCKCOMERCIAL/@(lmat.getCode).jpg" class="lmat_image" onerror="this.src='http://boconceptla.com/fotosmuebles/FOTOS/STOCKCOMERCIAL/4020058D0300134.jpg';" onclick="getLmatData(@lmat.getCode)">
+                </div>
+                <div class="col-sm-12" style="text-align: center">
+                <p>Total disponible : @lmat.getTotalAviable</p>
+                </div>
+              </div>
+          </div>
+      }
+      </div>
+    </div>
+    <br>
+    <div class="text-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="/sic/lmat/list/1?isFirst=false&criteria=@criteria">Primera</a>
+          </li>
+          @for(i <-pages ){
+            <li class="page-item"><a class="page-link" href="/sic/lmat/list/@(i)?isFirst=false&criteria=@criteria">@if(actualPage==i){<strong>@i</strong>}else{@(i)}</a></li>
+          }
+          <li class="page-item">
+            <a class="page-link" href="/sic/lmat/list/@(totalpages)?isFirst=false&criteria=@criteria">Ultima</a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  }
+}

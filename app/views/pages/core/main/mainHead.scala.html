@@ -1,0 +1,153 @@
+@(html : Html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SIC - Sistema Integrado Crusardi</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-grid.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-reboot.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("datatables/dataTables.bootstrap4.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("fontawesome-free-5.3.1-web/css/all.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("css/main.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("sweetAlert/sweetalert2.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("sb_admin/css/sb-admin.css")" rel="stylesheet" type="text/css">
+        <!-- js -->
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery/jquery.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.compatibility.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("fontawesome-free-5.3.1-web/js/all.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("datatables/jquery.dataTables.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.bundle.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("sb_admin/js/sb-admin.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("js/main.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("sweetAlert/sweetalert2.js")"></script>
+    <script type="text/javascript" src="@controllers.core.main.routes.MainController.javascriptRoutes"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+<body id="page-top">
+
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+        <a class="navbar-brand mr-1" style="color:#FFFFFF" id="tittleAndCOuntry">CRUSARDI</a>
+
+            <!-- Navbar Search -->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" onsubmit="applyLamtListFilters()">
+            <div class="input-group">
+                <input type="text" id="listFilterText" class="form-control" placeholder="Que buscas..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="applyLamtListFilters()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+            <!-- Navbar -->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" id="countryDropdown" role="button" data-toggle="dropdown"  aria-expanded="false">
+                    <i class="fas fa-globe"></i>
+                </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="countryDropdown">
+                        <a class="dropdown-item" id="countryDropdown" onclick="changeCountry('bw1')" data-toggle="modal">Colombia</a>
+                        <a class="dropdown-item" id="countryDropdown" onclick="changeCountry('dge')" data-toggle="modal">Costa Rica</a>
+                        <a class="dropdown-item" id="countryDropdown" onclick="changeCountry('uru')" data-toggle="modal">Panamá</a>
+                        <a class="dropdown-item" id="countryDropdown" onclick="changeCountry('wp1')" data-toggle="modal">Perú</a>
+                    </div>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"  aria-expanded="false">
+                    <i class="fas fa-user-cog"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="/sic/logOut" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div id="wrapper">
+            <!-- Sidebar -->
+        <ul class="sidebar navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/sic/lmat/list/1?isFirst=true&criteria=NONE">
+                    <i class="fas fa-boxes"></i>
+                    <span>Lmats totales</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sic/lmat/list/1?isFirst=true&criteria=silla">
+                    <i class="fas fa-boxes"></i>
+                    <span>Sillas</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sic/lmat/list/1?isFirst=true&criteria=mesa">
+                    <i class="fas fa-boxes"></i>
+                    <span>Mesas</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sic/lmat/list/1?isFirst=true&criteria=escritorio">
+                    <i class="fas fa-boxes"></i>
+                    <span>Escritorios</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sic/lmat/list/1?isFirst=true&criteria=accsesorio">
+                    <i class="fas fa-boxes"></i>
+                    <span>Accsesorios</span>
+                </a>
+            </li>
+        </ul>
+        <div id="content-wrapper">
+
+            <div class="container-fluid">
+    @html
+                    <!-- Sticky Footer -->
+                <footer class="sticky-footer">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright © Crusardi 2018</span>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+                <!-- /.content-wrapper -->
+
+        </div>
+            <!-- /#wrapper -->
+
+            <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+    </div>
+</body>
+</html>
+    <script>
+            window.onload = function() {
+                getCountry();
+            };
+
+            $(document).ready(function() {
+                $(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            });
+    </script>

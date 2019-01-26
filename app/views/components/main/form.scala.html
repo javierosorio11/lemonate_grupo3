@@ -1,0 +1,5 @@
+@(action: play.mvc.Call, formId: String, args: (Symbol,String)*)(body: => Html)
+
+<form id="@formId" action="@if(action!=null){@action.url}else{#}" method="@if(action!=null){@action.method}else{GET}" enctype="multipart/form-data" @toHtmlArgs(args.toMap)>
+@body
+</form>

@@ -1,0 +1,9 @@
+/.cache
+/.settings
+/logs
+/project/project
+/project/target
+/target
+/.idea
+/conf/application.conf
+/*.zip

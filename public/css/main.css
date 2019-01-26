@@ -1,0 +1,20 @@
+.lmat_image{
+    position: relative;
+
+    width:  100px;
+    height: 120px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+ }
+.lmat_image_detail{
+    width: 50%;
+    height: 80%;
+}
+.fixed{
+    position: relative;
+    height: 280px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
