@@ -10,7 +10,7 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.routing.JavaScriptReverseRouter;
-import views.html.pages.core.main.login;
+import views.html.pages.core.main.Home;
 import views.html.pages.core.main.lmatList;
 import views.html.pages.core.main.pageNotFound;
 import views.vo.enums.WarehouseEnum;
@@ -40,16 +40,15 @@ public class MainController extends Controller {
      * @return
      */
     public Result index() {
-        return redirect(controllers.core.main.routes.MainController.login());
+        return redirect(controllers.core.main.routes.MainController.home());
     }
 
     /**
      * pagina de inicio
      * @return
      */
-    public Result login() {
-        session().remove("usuario");
-        return ok(login.render(false));
+    public Result home() {
+        return ok(Home.render(false));
     }
 
     /**
@@ -61,29 +60,12 @@ public class MainController extends Controller {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
         String response=mainHelper.registration(dynamicForm);
         if("error".equals(response)){
-            return ok(login.render(true));
+            return ok(Home.render(true));
         }else{
-            return ok(login.render(true));
+            return ok(Home.render(true));
         }
     }
-    /**
-     * Autenticacion de datos
-     * @return
-     */
-    public Result home() {
 
-            return ok();
-
-    }
-    /**
-     * Autenticacion de datos
-     * @return
-     */
-    public Result logOut() {
-        session().remove("usuario");
-        flash().put("success","Sesión cerrada correctamente");
-        return ok(login.render(false));
-    }
     /**
      * metodo que m muestra la lista de LmatMadre
      * @return

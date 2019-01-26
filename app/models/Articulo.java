@@ -1,4 +1,4 @@
-package models.users;
+package models;
 
 import models.GenericEntity;
 
@@ -22,6 +22,12 @@ public class Articulo extends GenericEntity {
      */
     @Column
     private String userName;
+
+    /**
+     * Nombre de usuario
+     */
+    @Column
+    private String articleName;
 
     /**
      * Cedula
@@ -92,5 +98,13 @@ public class Articulo extends GenericEntity {
 
     public void setEstrato(String estrato) {
         this.estrato = estrato;
+    }
+
+    public String getArticleName() {
+        return articleName;
+    }
+
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
     }
 }

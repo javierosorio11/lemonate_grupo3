@@ -1,11 +1,10 @@
-GET         /sic/                                           controllers.core.main.MainController.index
+GET         /ld/                                           controllers.core.main.MainController.index
 GET         /                                               controllers.core.main.MainController.index
-GET         /sic                                            controllers.core.main.MainController.index
-GET         /sic/logIn                                      controllers.core.main.MainController.login()
-POST        /sic/getCountry                                 controllers.core.main.MainController.getActualCountry()
-GET         /sic/home                                       controllers.core.main.MainController.home()
-GET         /sic/jsroutes                                   controllers.core.main.MainController.javascriptRoutes
-GET         /sic/country/:country                           controllers.core.main.MainController.changeCountry(country : String)
+GET         /ld                                            controllers.core.main.MainController.index
+GET         /ld/home                                      controllers.core.main.MainController.home()
+POST        /ld/getCountry                                 controllers.core.main.MainController.getActualCountry()
+GET         /ld/jsroutes                                   controllers.core.main.MainController.javascriptRoutes
+GET         /ld/country/:country                           controllers.core.main.MainController.changeCountry(country : String)
 
 
 GET         /sic/assets/*file                          controllers.Assets.versioned(path="/public", file: Asset)
