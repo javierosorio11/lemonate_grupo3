@@ -22,15 +22,35 @@ public class MainHelper {
         return "";
     }
 
-    public boolean validateStrato(String calle, String carrera, long estrato){
+    public boolean validateStrato(long calle, long carrera, long estrato){
 
         boolean valido=false;
-        Query query=JPA.em().createQuery("select e.strato from estrato e where carrera = :carrera and calle = :calle");
-        query.setParameter("carrera", carrera);
-        query.setParameter("calle", calle);
-        Long estratoBD = (Long) query.getSingleResult();
+        long estratoBD=0;
 
-        try{
+       try{
+
+          if(calle > 0 & calle <= 20 & carrera > 0 & carrera <= 20){
+
+              estratoBD=1;
+          }else if(calle > 20 & calle <= 40 & carrera > 20 & carrera <= 40){
+
+              estratoBD=2;
+          }
+          else if(calle > 40 & calle <= 60 & carrera > 40 & carrera <= 60){
+
+              estratoBD=3;
+          }else if(calle > 60 & calle <= 80 & carrera > 60 & carrera <= 80){
+
+              estratoBD=4;
+          }else if(calle > 80 & calle <= 100 & carrera > 80 & carrera <= 100){
+
+              estratoBD=5;
+          }else if(calle > 100 & carrera >100){
+
+              estratoBD=6;
+
+           }
+
             if(estrato==estratoBD){
 
                 valido=true;
@@ -56,7 +76,7 @@ public class MainHelper {
         Long division = (Long) queryPD.getSingleResult();
 
 
-        double valorPrima=0;
+        double valorPrima = 0;
 
         valorPrima=((valorInmueble * porcentajePrima/100)/division)* porcentajeComision / 100;
 
