@@ -1,13 +1,13 @@
 @import views.html.pages.core.main.mainHead
 @import views.html.components.main.form
-@(error : Boolean)
+@(error : Boolean,dynamicForm: DynamicForm,errorText:String)
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SIC - Sistema Integrado Crusardi</title>
+    <title>Lemonade</title>
     <meta name="description" content="">
     <meta name="author" content="">
       <!-- css -->
@@ -42,7 +42,7 @@
       <body class="bg-dark">
         <div class="container">
           <div class="card card-Home mx-auto mt-5">
-            <div class="card-header">Idioma</div>
+            <div class="card-header">Registro</div>
             <div class="card-body">
               <form>
                 <h2 style="aling:center">Ingrese los datos del inmueble</h2>
@@ -50,14 +50,14 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Nombre de usuario</span>
                   </div>
-                  <input type="text" class="form-control" name="nombre" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" name="nombre" aria-label="Username" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("nombre")"}>
                 </div>
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Cedula</span>
                   </div>
-                  <input type="number" class="form-control" name="cedula" aria-label="cedula" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control" name="cedula" aria-label="cedula" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("cedula")"}>
                 </div>
 
 
@@ -78,7 +78,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Nombre del inmueble</span>
                   </div>
-                  <input type="text" class="form-control" name="nombremueble" aria-label="nombremueble" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" name="nombremueble" aria-label="nombremueble" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("nombremueble")"}>
                 </div>
 
                 <br>
@@ -104,14 +104,14 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Valor del inmueble</span>
                   </div>
-                  <input type="number" class="form-control" name="valor" aria-label="valor" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control" name="valor" aria-label="valor" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("valor")"}>
                 </div>
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Metraje</span>
                   </div>
-                  <input type="text" class="form-control" name="metraje" aria-label="metraje" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" name="metraje" aria-label="metraje" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("metraje")"}>
                 </div>
 
                 <div class="input-group">
@@ -129,6 +129,12 @@
                   <div class="input-group-append">
                   </div>
                 </div>
+                @if(null != errorText){
+                  <br>
+                  <div class="alert alert-danger" role="alert">
+                    Error en la creacion del articulo
+                  </div>
+                }
                 <br>
                 <button type="submit" class="w3-button w3-block w3-teal">Aceptar</button>
               </form>

@@ -50,7 +50,7 @@ public class MainController extends Controller {
      * @return
      */
     public Result registerForm() {
-        return ok(registtration.render(true));
+        return ok(registtration.render(true,null,null));
     }
 
     /**
@@ -62,7 +62,7 @@ public class MainController extends Controller {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
         Articulo articulo= mainHelper.registration(dynamicForm);
         if(null==articulo){
-            return ok(Home.render(true,null));
+            return ok(registtration.render(true,dynamicForm,"Los datos ingresados no son validos"));
         }else{
             flash().put("generalSuccess", "Exito al crear el siguiente registro : " + articulo.getArticleName());
             return ok(Home.render(false,articulo.getArticleName()));
