@@ -34,43 +34,54 @@ public class MainHelper {
 
 
     public Boolean validationArticle(DynamicForm dynamicForm){
-        String calle="";
-        String carrera="";
-        String estrato=dynamicForm.get("estrato");
-        if(dynamicForm.get("dr1").equals("Calle")){
-            calle=dynamicForm.get("dr2");
-        }else if(dynamicForm.get("dr1").equals("Carrera")){
-            carrera=dynamicForm.get("dr2");
+        try {
+            String calle = "";
+            String carrera = "";
+            String estrato = dynamicForm.get("estrato");
+            if (dynamicForm.get("dr1").equals("Calle")) {
+                calle = dynamicForm.get("dr2");
+            } else if (dynamicForm.get("dr1").equals("Carrera")) {
+                carrera = dynamicForm.get("dr2");
+            }
+            if (dynamicForm.get("dr3").equals("Calle")) {
+                calle = dynamicForm.get("dr4");
+            } else if (dynamicForm.get("dr3").equals("Carrera")) {
+                carrera = dynamicForm.get("dr4");
+            }
+            return validateStrato(calle, carrera, Long.parseLong(estrato));
+        }catch (Exception e){
+            return true;
         }
-        if(dynamicForm.get("dr3").equals("Calle")){
-            calle=dynamicForm.get("dr4");
-        }else if(dynamicForm.get("dr3").equals("Carrera")){
-            carrera=dynamicForm.get("dr4");
-        }
-        return validateStrato(calle,carrera,Long.parseLong(estrato));
     }
 
 
-    public boolean validateStrato(String calle, String carrera, long estrato){
-
-        boolean valido=false;
-        Query query=JPA.em().createQuery("select e.strato from estrato e where carrera = :carrera and calle = :calle");
-        query.setParameter("carrera", carrera);
-        query.setParameter("calle", calle);
-        Long estratoBD = (Long) query.getSingleResult();
-
-        try{
-            if(estrato==estratoBD){
-
-                valido=true;
-
-            }
-
-        }catch(Exception exeption){
-
+    public boolean validateStrato(String calle, String carrera, Long estrato){
+        Long carreraLong = Long.parseLong(carrera);
+        Long calleLong = Long.parseLong(calle);
+        Long estratoToCompare=0L;
+        if(carreraLong<=20 && calleLong<=20){
+            estratoToCompare=1L;
+        }else
+        if(carreraLong<60 && calleLong<=60){
+            estratoToCompare=2L;
+        }else
+        if(carreraLong<=80 && calleLong<=80){
+            estratoToCompare=3L;
+        }else
+        if(carreraLong<=100 && calleLong<=100){
+            estratoToCompare=4L;
+        }else
+        if(carreraLong<=120 && calleLong<=120){
+            estratoToCompare=5L;
+        }else
+        if(carreraLong<=140 && calleLong<=140){
+            estratoToCompare=6L;
         }
-
-        return valido;
+        if (estratoToCompare!=estrato){
+            return false;
+        }else{
+            return  true;
+        }
     }
 
     public Double valorPrima(Long valorInmueble){

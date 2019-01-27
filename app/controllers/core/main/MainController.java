@@ -60,6 +60,9 @@ public class MainController extends Controller {
     @Transactional
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+        if(!mainHelper.validationArticle(dynamicForm)){
+            return ok(registtration.render(true,dynamicForm,"La dirección no concuerda"));
+        }
         Articulo articulo= mainHelper.registration(dynamicForm);
         if(null==articulo){
             return ok(registtration.render(true,dynamicForm,"Los datos ingresados no son validos"));
