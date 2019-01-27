@@ -1,9 +1,6 @@
 package controllers.core.main;
 
 import controllers.core.main.helpers.MainHelper;
-import models.GenericEntity;
-import org.hibernate.SessionFactory;
-import play.Logger;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
@@ -11,12 +8,9 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.routing.JavaScriptReverseRouter;
 import views.html.pages.core.main.Home;
-import views.html.pages.core.main.lmatList;
+import views.html.pages.core.main.registtration;
 import views.html.pages.core.main.pageNotFound;
-import views.vo.enums.WarehouseEnum;
-
 import javax.inject.Inject;
-import java.util.List;
 
 public class MainController extends Controller {
     private final FormFactory formFactory;
@@ -49,6 +43,13 @@ public class MainController extends Controller {
      */
     public Result home() {
         return ok(Home.render(false));
+    }
+    /**
+     * pagina de inicio
+     * @return
+     */
+    public Result registerForm() {
+        return ok(registtration.render(false));
     }
 
     /**
