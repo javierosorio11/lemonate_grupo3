@@ -1,4 +1,4 @@
-package models.users;
+package models;
 
 import models.GenericEntity;
 
@@ -24,6 +24,12 @@ public class Articulo extends GenericEntity {
     private String userName;
 
     /**
+     * Nombre de usuario
+     */
+    @Column
+    private String articleName;
+
+    /**
      * Cedula
      */
     @Column
@@ -45,7 +51,21 @@ public class Articulo extends GenericEntity {
      */
     @Column
     private String estrato;
-
+    /**
+     * estrato
+     */
+    @Column
+    private Double valor;
+    /**
+     * estrato
+     */
+    @Column
+    private Double valorPrima;
+    /**
+     * estrato
+     */
+    @Column
+    private String metraje;
     public Long getId() {
         return id;
     }
@@ -60,6 +80,14 @@ public class Articulo extends GenericEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     public String getUserId() {
@@ -92,5 +120,29 @@ public class Articulo extends GenericEntity {
 
     public void setEstrato(String estrato) {
         this.estrato = estrato;
+    }
+
+    public String getArticleName() {
+        return articleName;
+    }
+
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
+    }
+
+    public Double getValorPrima() {
+        return valorPrima;
+    }
+
+    public void setValorPrima(Double valorPrima) {
+        this.valorPrima = valorPrima;
+    }
+
+    public String getMetraje() {
+        return metraje;
+    }
+
+    public void setMetraje(String metraje) {
+        this.metraje = metraje;
     }
 }

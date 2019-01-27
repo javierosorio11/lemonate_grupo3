@@ -1,0 +1,150 @@
+@import views.html.pages.core.main.mainHead
+@import views.html.components.main.form
+@(error : Boolean,dynamicForm: DynamicForm,errorText:String)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Lemonade</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+      <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-grid.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("bootstrap/css/bootstrap-reboot.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("datatables/dataTables.bootstrap4.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("fontawesome-free-5.3.1-web/css/all.css")" rel="stylesheet" type="text/css">
+    <link href="@routes.Assets.versioned("sb_admin/css/sb-admin.css")" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <!-- js -->
+    <script type="text/javascript" src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery/jquery.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery/jquery.slim.js")"></script>
+
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("jquery-easing/jquery.easing.compatibility.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("fontawesome-free-5.3.1-web/js/all.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("datatables/dataTables.bootstrap4.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("datatables/jquery.dataTables.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("bootstrap/js/bootstrap.bundle.js")"></script>
+
+    <script type="text/javascript" src="@routes.Assets.versioned("sb_admin/js/sb-admin.js")"></script>
+    <script type="text/javascript" src="@controllers.core.main.routes.MainController.javascriptRoutes"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  </head>
+    @form(controllers.core.main.routes.MainController.register(),"registerForm"){
+
+      <body class="bg-dark">
+        <div class="container">
+          <div class="card card-Home mx-auto mt-5">
+            <div class="card-header">Registro</div>
+            <div class="card-body">
+              <form>
+                <h2 style="aling:center">Ingrese los datos del inmueble</h2>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Nombre de usuario</span>
+                  </div>
+                  <input type="text" class="form-control" name="nombre" aria-label="Username" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("nombre")"}>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Cedula</span>
+                  </div>
+                  <input type="number" class="form-control" name="cedula" aria-label="cedula" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("cedula")"}>
+                </div>
+
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Tipo de inmueble</span>
+                  </div>
+                  <select class="custom-select" name="tipomueble" id="inputGroupSelect04">
+                    <option selected value="Apartamento">Apartamento</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Local">Local</option>
+                  </select>
+                  <div class="input-group-append">
+                  </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Nombre del inmueble</span>
+                  </div>
+                  <input type="text" class="form-control" name="nombremueble" aria-label="nombremueble" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("nombremueble")"}>
+                </div>
+
+                <br>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Dirección del inmueble</span>
+                  </div>
+                  <select class="custom-select" name="dr1" id="inputGroupSelect05">
+                    <option selected value="Calle">Calle</option>
+                    <option value="Carrera">Carrera</option>
+                  </select>
+                  <input type="text" name ="dr2" class="form-control">
+                  <select class="custom-select" name="dr3" id="inputGroupSelect06">
+                    <option selected value="Calle">Calle</option>
+                    <option value="Carrera">Carrera</option>
+                  </select>
+                  <input type="text" name="dr4" class="form-control">
+                  <h3>-</h3>
+                  <input type="text" name="dr5" class="form-control">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Valor del inmueble</span>
+                  </div>
+                  <input type="number" class="form-control" name="valor" aria-label="valor" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("valor")"}>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Metraje</span>
+                  </div>
+                  <input type="text" class="form-control" name="metraje" aria-label="metraje" aria-describedby="basic-addon1" @if(null!=dynamicForm){value="@dynamicForm.get("metraje")"}>
+                </div>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">estrato</span>
+                  </div>
+                  <select class="custom-select" name="estrato" id="inputGroupSelect04">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                  <div class="input-group-append">
+                  </div>
+                </div>
+                @if(null != errorText){
+                  <br>
+                  <div class="alert alert-danger" role="alert">
+                     @errorText
+                  </div>
+                }
+                <br>
+                <button type="submit" class="w3-button w3-block w3-teal">Aceptar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </body>
+
+
+
+    }
+
+</html>
