@@ -1,22 +1,17 @@
 package controllers.core.main;
 
 import controllers.core.main.helpers.MainHelper;
-import models.GenericEntity;
-import org.hibernate.SessionFactory;
-import play.Logger;
+import models.Articulo;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.routing.JavaScriptReverseRouter;
-import views.html.pages.core.main.login;
-import views.html.pages.core.main.lmatList;
+import views.html.pages.core.main.Home;
+import views.html.pages.core.main.registtration;
 import views.html.pages.core.main.pageNotFound;
-import views.vo.enums.WarehouseEnum;
-
 import javax.inject.Inject;
-import java.util.List;
 
 public class MainController extends Controller {
     private final FormFactory formFactory;
@@ -40,16 +35,22 @@ public class MainController extends Controller {
      * @return
      */
     public Result index() {
-        return redirect(controllers.core.main.routes.MainController.login());
+        return redirect(controllers.core.main.routes.MainController.home());
     }
 
     /**
      * pagina de inicio
      * @return
      */
-    public Result login() {
-        session().remove("usuario");
-        return ok(login.render(false));
+    public Result home() {
+        return ok(Home.render(false,null));
+    }
+    /**
+     * pagina de inicio
+     * @return
+     */
+    public Result registerForm() {
+        return ok(registtration.render(true,null,null));
     }
 
     /**
@@ -59,31 +60,18 @@ public class MainController extends Controller {
     @Transactional
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-        String response=mainHelper.registration(dynamicForm);
-        if("error".equals(response)){
-            return ok(login.render(true));
+        if(!mainHelper.validationArticle(dynamicForm)){
+            return ok(registtration.render(true,dynamicForm,"La dirección no concuerda"));
+        }
+        Articulo articulo= mainHelper.registration(dynamicForm);
+        if(null==articulo){
+            return ok(registtration.render(true,dynamicForm,"Los datos ingresados no son validos"));
         }else{
-            return ok(login.render(true));
+            flash().put("generalSuccess", "Exito al crear el siguiente registro : " + articulo.getArticleName());
+            return ok(Home.render(false,articulo.getArticleName()));
         }
     }
-    /**
-     * Autenticacion de datos
-     * @return
-     */
-    public Result home() {
 
-            return ok();
-
-    }
-    /**
-     * Autenticacion de datos
-     * @return
-     */
-    public Result logOut() {
-        session().remove("usuario");
-        flash().put("success","Sesión cerrada correctamente");
-        return ok(login.render(false));
-    }
     /**
      * metodo que m muestra la lista de LmatMadre
      * @return
