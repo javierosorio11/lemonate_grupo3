@@ -1,6 +1,6 @@
 @import views.html.pages.core.main.mainHead
 @import views.html.components.main.form
-@(error : Boolean,articulo : String)
+@(error : Boolean,articulo : String,valor:String)
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,6 +59,12 @@
           <br>
           <div class="alert alert-success" role="alert">
               Artículo creado exitosamente @articulo
+          </div>
+          <br>
+          <div class="container">
+              <div class="card card-Home mx-auto mt-5">
+              <h1>El valor de su seguro es $ @valor</h1>
+          </div>
           </div>
       }
 

@@ -24,6 +24,7 @@ public class MainHelper {
             articulo.setUserId(dynamicForm.get("cedula"));
             articulo.setMetraje(dynamicForm.get("metraje"));
             articulo.setValor(Double.parseDouble(dynamicForm.get("valor")));
+            articulo.setValorPrima(valorPrima(Long.parseLong(dynamicForm.get("valor"))));
             articulo.save();
             return articulo;
         }catch(Exception exeption){
@@ -85,26 +86,24 @@ public class MainHelper {
     }
 
     public Double valorPrima(Long valorInmueble){
+        try {
+            Query queryPP = JPA.em().createQuery("select p.vch_valor from Parametros p where vch_descripcion = 'porcentajePrima'");
+            Long porcentajePrima = Long.parseLong((String) queryPP.getSingleResult());
 
-        Query queryPP=JPA.em().createQuery("select p.valor from parametros p where parametro = 'porcentajePrima'");
-        Long porcentajePrima = (Long) queryPP.getSingleResult();
+            Query queryPC = JPA.em().createQuery("select p.vch_valor from Parametros p where vch_descripcion = 'porcentajeComision'");
+            Double porcentajeComision = Double.parseDouble((String) queryPC.getSingleResult());
 
-        Query queryPC=JPA.em().createQuery("select p.valor from parametros p where parametro = 'porcentajeComision'");
-        Long porcentajeComision = (Long) queryPC.getSingleResult();
+            Query queryPD = JPA.em().createQuery("select p.vch_valor from Parametros p where vch_descripcion = 'devision'");
+            Double division = Double.parseDouble((String) queryPD.getSingleResult());
 
-        Query queryPD=JPA.em().createQuery("select p.valor from parametros p where parametro = 'devision'");
-        Long division = (Long) queryPD.getSingleResult();
+            double valorPrima=0;
 
-
-        double valorPrima=0;
-
-        valorPrima=((valorInmueble * porcentajePrima/100)/division)* porcentajeComision / 100;
-
-
-
-
-
-        return valorPrima;
+            valorPrima=((valorInmueble * porcentajePrima/100)/division)+ (((valorInmueble * porcentajePrima/100)/division)*porcentajeComision);
+            return Math.floor(valorPrima);
+        }catch (Exception e){
+            System.out.print(e);
+            return 0.0;
+        }
     }
 
 }

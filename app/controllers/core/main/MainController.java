@@ -43,7 +43,7 @@ public class MainController extends Controller {
      * @return
      */
     public Result home() {
-        return ok(Home.render(false,null));
+        return ok(Home.render(false,null,null));
     }
     /**
      * pagina de inicio
@@ -68,7 +68,7 @@ public class MainController extends Controller {
             return ok(registtration.render(true,dynamicForm,"Los datos ingresados no son validos"));
         }else{
             flash().put("generalSuccess", "Exito al crear el siguiente registro : " + articulo.getArticleName());
-            return ok(Home.render(false,articulo.getArticleName()));
+            return ok(Home.render(false,articulo.getArticleName(),articulo.getValorPrima().toString()));
         }
     }
 

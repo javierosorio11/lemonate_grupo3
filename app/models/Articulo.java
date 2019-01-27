@@ -60,6 +60,11 @@ public class Articulo extends GenericEntity {
      * estrato
      */
     @Column
+    private Double valorPrima;
+    /**
+     * estrato
+     */
+    @Column
     private String metraje;
     public Long getId() {
         return id;
@@ -123,6 +128,14 @@ public class Articulo extends GenericEntity {
 
     public void setArticleName(String articleName) {
         this.articleName = articleName;
+    }
+
+    public Double getValorPrima() {
+        return valorPrima;
+    }
+
+    public void setValorPrima(Double valorPrima) {
+        this.valorPrima = valorPrima;
     }
 
     public String getMetraje() {
