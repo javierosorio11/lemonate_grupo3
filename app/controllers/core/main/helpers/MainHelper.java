@@ -46,13 +46,13 @@ public class MainHelper {
 
     public Double valorPrima(Long valorInmueble){
 
-        Query queryPP=JPA.em().createQuery("select p.valor from parametros p where parametro = 'porcentajePrima'");
+        Query queryPP=JPA.em().createQuery("select p.vch_valor from parametros p where p.vch_descripcion= 'porcentajePrima'");
         Long porcentajePrima = (Long) queryPP.getSingleResult();
 
-        Query queryPC=JPA.em().createQuery("select p.valor from parametros p where parametro = 'porcentajeComision'");
+        Query queryPC=JPA.em().createQuery("select p.vch_valor from parametros p where p.vch_descripcion= 'porcentajeComision'");
         Long porcentajeComision = (Long) queryPC.getSingleResult();
 
-        Query queryPD=JPA.em().createQuery("select p.valor from parametros p where parametro = 'devision'");
+        Query queryPD=JPA.em().createQuery("select p.vch_valor from parametros p where p.vch_descripcion= 'devision'");
         Long division = (Long) queryPD.getSingleResult();
 
 
