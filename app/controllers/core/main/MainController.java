@@ -60,7 +60,6 @@ public class MainController extends Controller {
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
         String response=mainHelper.registration(dynamicForm);
-        
         if("error".equals(response)){
             return ok(Home.render(true));
         }else{

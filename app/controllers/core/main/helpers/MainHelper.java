@@ -19,9 +19,10 @@ public class MainHelper {
             articulo.setUserName(dynamicForm.get("nombre"));
             articulo.setArticleType(dynamicForm.get("tipo_inmueble"));
             articulo.setEstrato(dynamicForm.get("estrato"));
-            articulo.setDirection(dynamicForm.get("direccion1")+" "+dynamicForm.get("direccion2")+" "+dynamicForm.get("direccion3")+dynamicForm.get("direccion4")+" - "+dynamicForm.get("direccion5"));
+            articulo.setDirection(dynamicForm.get("dr1")+" "+dynamicForm.get("dr2")+" "+dynamicForm.get("dr3")+dynamicForm.get("dr4")+" - "+dynamicForm.get("dr5"));
             articulo.setArticleName(dynamicForm.get("nombre_inmueble"));
             articulo.setUserId(dynamicForm.get("cedula"));
+            articulo.setMetraje(dynamicForm.get("metraje"));
             articulo.save();
         }catch(Exception exeption){
             return "noData";
