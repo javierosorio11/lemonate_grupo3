@@ -2,6 +2,8 @@ GET         /ld/                                           controllers.core.main
 GET         /                                               controllers.core.main.MainController.index
 GET         /ld                                            controllers.core.main.MainController.index
 GET         /ld/home                                      controllers.core.main.MainController.home()
+GET         /ld/registrationForm                           controllers.core.main.MainController.registerForm()
+GET         /ld/register                                   controllers.core.main.MainController.register()
 POST        /ld/getCountry                                 controllers.core.main.MainController.getActualCountry()
 GET         /ld/jsroutes                                   controllers.core.main.MainController.javascriptRoutes
 GET         /ld/country/:country                           controllers.core.main.MainController.changeCountry(country : String)

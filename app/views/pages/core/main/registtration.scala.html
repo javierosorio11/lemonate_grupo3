@@ -35,39 +35,21 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
   </head>
-    @form(controllers.core.main.routes.MainController.authenticate(),"loginform"){
-  <body class="bg-dark">
-    <div class="container">
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Inicio</div>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="text" id="user" name="user" class="form-control">
-                <label for="inputEmail">Usuario</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" name="inputPassword" class="form-control">
-                <label for="inputPassword">Contraseña</label>
-              </div>
-            </div>
-            @if(error){
-            <div class="alert alert-danger" role="alert">
-              Usuario o contraseña incorrecta
-            </div>
-            }
-            <button class="btn btn-primary btn-block" type="submit">Inicio</button>
-          </form>
-          <div class="text-center">
-            <a class="d-block small" href="forgot-password.html">Olvidó su contraseña?</a>
+    @form(controllers.core.main.routes.MainController.register(),"loginform"){
+      <div class="row">
+        <div class="form-group" id="classificationArea">
+          <label class="col-sm-5">@Messages("message.articleType") <span style="color: red">*</span></label>
+          <div class="col-sm-7 input-group">
+            <select class="form-control" id="classificationForm" name="classificationForm">
+              <option value="">@Messages("message.core.select")</option>
+
+                <option value="1" selected>1</option>
+
+            </select>
           </div>
+          <span id="classificationError" class="help-block col-md-offset-5" ></span>
         </div>
       </div>
-    </div>
-    </body>
     }
 
 </html>
