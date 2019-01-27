@@ -13,22 +13,43 @@ import java.util.function.Supplier;
 
 public class MainHelper {
 
-    public String registration(DynamicForm dynamicForm){
+    public Articulo registration(DynamicForm dynamicForm){
         try{
             Articulo articulo=new Articulo();
             articulo.setUserName(dynamicForm.get("nombre"));
-            articulo.setArticleType(dynamicForm.get("tipo_inmueble"));
+            articulo.setArticleType(dynamicForm.get("tipomueble"));
             articulo.setEstrato(dynamicForm.get("estrato"));
             articulo.setDirection(dynamicForm.get("dr1")+" "+dynamicForm.get("dr2")+" "+dynamicForm.get("dr3")+dynamicForm.get("dr4")+" - "+dynamicForm.get("dr5"));
-            articulo.setArticleName(dynamicForm.get("nombre_inmueble"));
+            articulo.setArticleName(dynamicForm.get("nombremueble"));
             articulo.setUserId(dynamicForm.get("cedula"));
             articulo.setMetraje(dynamicForm.get("metraje"));
+            articulo.setValor(Double.parseDouble(dynamicForm.get("valor")));
             articulo.save();
+            return articulo;
         }catch(Exception exeption){
-            return "noData";
+            return null;
         }
-        return "succes";
+
     }
+
+
+    public Boolean validationArticle(DynamicForm dynamicForm){
+        String calle="";
+        String carrera="";
+        String estrato=dynamicForm.get("estrato");
+        if(dynamicForm.get("dr1").equals("Calle")){
+            calle=dynamicForm.get("dr2");
+        }else if(dynamicForm.get("dr1").equals("Carrera")){
+            carrera=dynamicForm.get("dr2");
+        }
+        if(dynamicForm.get("dr3").equals("Calle")){
+            calle=dynamicForm.get("dr4");
+        }else if(dynamicForm.get("dr3").equals("Carrera")){
+            carrera=dynamicForm.get("dr4");
+        }
+        return validateStrato(calle,carrera,Long.parseLong(estrato));
+    }
+
 
     public boolean validateStrato(String calle, String carrera, long estrato){
 

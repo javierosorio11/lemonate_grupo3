@@ -44,15 +44,21 @@
         <div class="card-body">
           <form>
             <h2 style="aling:center">Selecione</h2>
-            <button class="w3-button w3-block w3-teal" onclick="window.location.href='http://www.hyperlinkcode.com/button-links.php'">Registro</button>
+            <button type="button" class="w3-button w3-block w3-teal" onclick="window.location.href='/ld/registrationForm'">Registro</button>
+              <br>
             <br>
             <br>
-            <br>
-            <button class="w3-button w3-block w3-black">Button</button>
+            <button class="w3-button w3-block w3-black">Hacer efectivo un seguro</button>
           </form>
         </div>
       </div>
     </div>
+      @if(!error){
+          <div class="alert alert-success" role="alert">
+              Artículo creado exitosamente
+          </div>
+      }
+
     </body>
 <script>
   function travel(){

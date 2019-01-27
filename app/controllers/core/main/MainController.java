@@ -1,6 +1,7 @@
 package controllers.core.main;
 
 import controllers.core.main.helpers.MainHelper;
+import models.Articulo;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
@@ -59,11 +60,13 @@ public class MainController extends Controller {
     @Transactional
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-        String response=mainHelper.registration(dynamicForm);
-        if("error".equals(response)){
+        Boolean strato=
+        Articulo articulo= mainHelper.registration(dynamicForm);
+        if(null==articulo){
             return ok(Home.render(true));
         }else{
-            return ok(Home.render(true));
+            flash().put("generalSuccess", "Exito al crear el siguiente registro : " + articulo.getArticleName());
+            return ok(Home.render(false));
         }
     }
 

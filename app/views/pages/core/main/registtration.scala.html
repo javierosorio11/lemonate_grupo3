@@ -66,12 +66,19 @@
                     <span class="input-group-text" id="basic-addon1">Tipo de inmueble</span>
                   </div>
                   <select class="custom-select" name="tipomueble" id="inputGroupSelect04">
-                    <option selected>Apartamento</option>
-                    <option value="1">Casa</option>
-                    <option value="2">Local</option>
+                    <option selected value="Apartamento">Apartamento</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Local">Local</option>
                   </select>
                   <div class="input-group-append">
                   </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Nombre del inmueble</span>
+                  </div>
+                  <input type="text" class="form-control" name="nombremueble" aria-label="nombremueble" aria-describedby="basic-addon1">
                 </div>
 
                 <br>
@@ -80,13 +87,13 @@
                     <span class="input-group-text" id="">Dirección del inmueble</span>
                   </div>
                   <select class="custom-select" name="dr1" id="inputGroupSelect05">
-                    <option selected>Calle</option>
-                    <option value="1">Carera</option>
+                    <option selected value="Calle">Calle</option>
+                    <option value="Carrera">Carrera</option>
                   </select>
                   <input type="text" name ="dr2" class="form-control">
                   <select class="custom-select" name="dr3" id="inputGroupSelect06">
-                    <option selected>Calle</option>
-                    <option value="1">Carera</option>
+                    <option selected value="Calle">Calle</option>
+                    <option value="Carrera">Carrera</option>
                   </select>
                   <input type="text" name="dr4" class="form-control">
                   <h3>-</h3>
@@ -107,12 +114,22 @@
                   <input type="text" class="form-control" name="metraje" aria-label="metraje" aria-describedby="basic-addon1">
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Estrato</span>
+                    <span class="input-group-text" id="basic-addon1">estrato</span>
                   </div>
-                  <input type="text" class="form-control" name="estrato" aria-label="estrato" aria-describedby="basic-addon1">
+                  <select class="custom-select" name="estrato" id="inputGroupSelect04">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                  <div class="input-group-append">
+                  </div>
                 </div>
+                <br>
                 <button type="submit" class="w3-button w3-block w3-teal">Aceptar</button>
               </form>
             </div>

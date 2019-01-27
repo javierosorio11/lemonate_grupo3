@@ -55,6 +55,11 @@ public class Articulo extends GenericEntity {
      * estrato
      */
     @Column
+    private Double valor;
+    /**
+     * estrato
+     */
+    @Column
     private String metraje;
     public Long getId() {
         return id;
@@ -70,6 +75,14 @@ public class Articulo extends GenericEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     public String getUserId() {
