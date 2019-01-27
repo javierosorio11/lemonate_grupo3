@@ -1,6 +1,6 @@
 @import views.html.pages.core.main.mainHead
 @import views.html.components.main.form
-@(error : Boolean)
+@(error : Boolean,articulo : String)
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,9 +53,12 @@
         </div>
       </div>
     </div>
-      @if(!error){
+      @if(null != articulo){
+          <br>
+          <br>
+          <br>
           <div class="alert alert-success" role="alert">
-              Artículo creado exitosamente
+              Artículo creado exitosamente @articulo
           </div>
       }
 

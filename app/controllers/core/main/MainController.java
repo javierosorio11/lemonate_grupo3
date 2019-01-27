@@ -43,14 +43,14 @@ public class MainController extends Controller {
      * @return
      */
     public Result home() {
-        return ok(Home.render(false));
+        return ok(Home.render(false,null));
     }
     /**
      * pagina de inicio
      * @return
      */
     public Result registerForm() {
-        return ok(registtration.render(false));
+        return ok(registtration.render(true));
     }
 
     /**
@@ -60,13 +60,12 @@ public class MainController extends Controller {
     @Transactional
     public Result register() {
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-        Boolean strato=
         Articulo articulo= mainHelper.registration(dynamicForm);
         if(null==articulo){
-            return ok(Home.render(true));
+            return ok(Home.render(true,null));
         }else{
             flash().put("generalSuccess", "Exito al crear el siguiente registro : " + articulo.getArticleName());
-            return ok(Home.render(false));
+            return ok(Home.render(false,articulo.getArticleName()));
         }
     }
 
